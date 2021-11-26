@@ -30,6 +30,7 @@ func IsDev() bool {
 	}
 	return false
 }
+
 // NotLogin 是否不需要登录
 func NotLogin() bool {
 	if IsDev() && viper.GetInt("notlogin") == 1 {
@@ -37,7 +38,6 @@ func NotLogin() bool {
 	}
 	return false
 }
-
 
 func Struct2struct(in interface{}, out interface{}) {
 	s, _ := json.Marshal(in)
