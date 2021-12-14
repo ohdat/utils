@@ -1,10 +1,10 @@
 package utils
 
 import (
+	crand "crypto/rand"
 	"encoding/hex"
 	"math/big"
 	"math/rand"
-	crand "crypto/rand"
 	"time"
 )
 
@@ -14,6 +14,11 @@ var numLetters = []byte("123456789")
 
 func init() {
 	rand.Seed(time.Now().Unix())
+}
+
+func RandLowStr(n int) string {
+	var _byte = RandLow(n)
+	return string(_byte)
 }
 
 // RandNum 随机数字字符串，包含 1~9
@@ -89,7 +94,7 @@ func RandHex(n int) []byte {
 }
 
 func RandId(ids []int) (id int) {
-	if len(ids) == 0{
+	if len(ids) == 0 {
 		return 0
 	}
 	bInt, _ := crand.Int(crand.Reader, big.NewInt(int64(len(ids))))
