@@ -2,7 +2,6 @@ package utils
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/spf13/viper"
 	"reflect"
 	"strconv"
@@ -49,17 +48,15 @@ func Struct2struct(in interface{}, out interface{}) {
 //binding type interface 要修改的结构体
 // value type interface 有数据的结构体
 func StructAssign(binding interface{}, value interface{}) {
-
 	bVal := reflect.ValueOf(binding).Elem() //获取reflect.Type类型
 	vVal := reflect.ValueOf(value).Elem()   //获取reflect.Type类型
 	vTypeOfT := vVal.Type()
-	fmt.Printf("vTypeOfT %+v", vTypeOfT)
 	for i := 0; i < vVal.NumField(); i++ {
-
 		// 在要修改的结构体中查询有数据结构体中相同属性的字段，有则修改其值
 		name := vTypeOfT.Field(i).Name
 		if ok := bVal.FieldByName(name).IsValid(); ok {
-			if bVal.FieldByName(name).Type().Name() == vTypeOfT.Field(i).Type.Name() {
+			//验证类型
+			if tok := bVal.FieldByName(name).Type().AssignableTo(vTypeOfT.Field(i).Type); tok {
 				bVal.FieldByName(name).Set(reflect.ValueOf(vVal.Field(i).Interface()))
 			}
 		}
