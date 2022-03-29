@@ -94,8 +94,8 @@ func (s Signature) TokenPay(
 	operatorAddress string,
 	amount *big.Int,
 	tokenAddress string,
-	divideAmount *big.Int,
 	toAddress string,
+	divideAmount *big.Int,
 	blockHeight int,
 	nonce string,
 ) (hashStr, signature string, err error) {
