@@ -5,6 +5,7 @@ import (
 	"github.com/spf13/viper"
 	"reflect"
 	"strconv"
+	"strings"
 )
 
 func StrToInt(str string) (int, error) {
@@ -21,6 +22,22 @@ func ArrStringToMapInt32(arr []string) map[int32]string {
 		maps[int32(i)] = v
 	}
 	return maps
+}
+
+func Str2ArrInt(str string) (arr []int, err error) {
+	//字符串分割成数组
+	arrStr := strings.Split(str, ",")
+	for _, v := range arrStr {
+		if v == "" {
+			continue
+		}
+		id, errs := StrToInt(v)
+		if errs != nil {
+			continue
+		}
+		arr = append(arr, id)
+	}
+	return
 }
 
 // IsDev 是否是开发环境

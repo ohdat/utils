@@ -23,3 +23,8 @@ func TestStructAssign(t *testing.T) {
 	StructAssign(s2, s1)
 	fmt.Println("s2:", s2)
 }
+
+func TestStrToArrInt(t *testing.T) {
+	arr, err := Str2ArrInt("1,2,3,4,5")
+	fmt.Println("arr:", arr, "err:", err)
+}
