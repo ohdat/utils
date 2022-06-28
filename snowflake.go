@@ -12,7 +12,7 @@ var sfOnce sync.Once
 func GetSnowflake() *sonyflake.Sonyflake {
 	sfOnce.Do(func() {
 		sf = sonyflake.NewSonyflake(sonyflake.Settings{
-			StartTime: time.Now(),
+			StartTime: time.Time{},
 		})
 	})
 	return sf
