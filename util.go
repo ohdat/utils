@@ -79,3 +79,24 @@ func StructAssign(binding interface{}, value interface{}) {
 		}
 	}
 }
+
+// DuplicationArrInt 数组去重
+func DuplicationArrInt(arr []int) []int {
+	var newArr []int
+	for _, v := range arr {
+		if !ContainsInt(newArr, v) {
+			newArr = append(newArr, v)
+		}
+	}
+	return newArr
+}
+
+// ContainsInt 判断数组中是否包含某个值
+func ContainsInt(arr []int, target int) bool {
+	for _, v := range arr {
+		if v == target {
+			return true
+		}
+	}
+	return false
+}

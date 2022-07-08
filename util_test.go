@@ -28,3 +28,12 @@ func TestStrToArrInt(t *testing.T) {
 	arr, err := Str2ArrInt("1,2,3,4,5")
 	fmt.Println("arr:", arr, "err:", err)
 }
+func TestDuplicationArrInt(t *testing.T) {
+	arr := []int{1, 5, 2, 5, 2, 2, 52, 3, 4, 5}
+	arr = DuplicationArrInt(arr)
+	fmt.Println("arr:", arr)
+}
+func TestContainsInt(t *testing.T) {
+	arr := []int{1, 2, 3, 4, 5}
+	fmt.Println("ContainsInt:", ContainsInt(arr, 3))
+}
