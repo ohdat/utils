@@ -2,8 +2,10 @@ package utils
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/spf13/viper"
 	"reflect"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -99,4 +101,10 @@ func ContainsInt(arr []int, target int) bool {
 		}
 	}
 	return false
+}
+
+func ArrIntToString(aids []int) string {
+	// sort aids
+	sort.Ints(aids)
+	return strings.Trim(strings.Join(strings.Fields(fmt.Sprint(aids)), ","), "[]")
 }
